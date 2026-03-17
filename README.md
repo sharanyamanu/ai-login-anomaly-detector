@@ -1,10 +1,8 @@
-# Welcome to your Lovable project
 
-TODO: Document your project here
 # 🚨 LogShield AI – Threat Intelligence Dashboard
 
-🔗 Live Demo: https://your-vercel-link.vercel.app  
-🔗 Backend API: https://ai-threat-backend.onrender.com  
+🔗 Live Demo: https://ai-login-anomaly-detector-u1pp-ne8whpr8d-sharanyamanus-projects.vercel.app/  
+🔗 Backend API: https://ai-threat-backend.onrender.com/
 
 ## 📌 Overview
 AI-powered system to detect anomalous login behavior using Machine Learning.
