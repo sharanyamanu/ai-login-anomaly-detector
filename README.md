@@ -1,7 +1,7 @@
 
 # 🚨 LogShield AI – Threat Intelligence Dashboard
 
-🔗 Live Demo: https://ai-login-anomaly-detector-u1pp-ne8whpr8d-sharanyamanus-projects.vercel.app/  
+🔗 Live Demo: https://ai-login-anomaly-detector-u1pp-sharanyamanus-projects.vercel.app
 🔗 Backend API: https://ai-threat-backend.onrender.com/
 
 ## 📌 Overview
