@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 92%;
+
+    --card: 222 44% 8%;
+    --card-foreground: 210 40% 92%;
+
+    --popover: 222 44% 8%;
+    --popover-foreground: 210 40% 92%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 210 40% 85%;
+
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 199 89% 48%;
+    --accent-foreground: 222 47% 6%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 30% 16%;
+    --input: 222 30% 16%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.75rem;
+
+    /* Cyber tokens */
+    --cyber-green: 142 71% 45%;
+    --cyber-red: 0 72% 55%;
+    --cyber-orange: 25 95% 53%;
+    --cyber-yellow: 48 96% 53%;
+    --cyber-neon: 199 89% 48%;
+    --cyber-purple: 263 70% 58%;
+
+    --glow-primary: 0 0 20px hsl(199 89% 48% / 0.3);
+    --glow-red: 0 0 20px hsl(0 72% 55% / 0.3);
+    --glow-green: 0 0 20px hsl(142 71% 45% / 0.3);
+    --glow-orange: 0 0 20px hsl(25 95% 53% / 0.3);
+
+    --font-display: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  .glow-red {
+    box-shadow: var(--glow-red);
+  }
+  .glow-green {
+    box-shadow: var(--glow-green);
+  }
+  .glow-orange {
+    box-shadow: var(--glow-orange);
+  }
+  .text-glow-primary {
+    text-shadow: 0 0 10px hsl(199 89% 48% / 0.5);
+  }
+  .text-glow-red {
+    text-shadow: 0 0 10px hsl(0 72% 55% / 0.5);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .cyber-grid-bg {
+    background-image:
+      linear-gradient(hsl(199 89% 48% / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(199 89% 48% / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .scan-line {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      hsl(199 89% 48% / 0.03) 50%,
+      transparent 100%
+    );
+    animation: scan 4s linear infinite;
+  }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
