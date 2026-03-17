@@ -7,15 +7,15 @@ import { ThreatTable } from "@/components/dashboard/ThreatTable";
 import { AIExplanation } from "@/components/dashboard/AIExplanation";
 import { toast } from "sonner";
 
+const BACKEND_URL = "https://ai-threat-backend.onrender.com"; // 🔥 CHANGE HERE
+
 const Index = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [logs, setLogs] = useState<any[]>([]);
 
-  // 🔥 dynamic counts
   const suspicious = logs.filter((l) => l.anomaly === -1).length;
   const normal = logs.filter((l) => l.anomaly === 1).length;
 
-  // 🔥 API CALL TO FLASK
   const handleAnalyze = async (file: File) => {
     setIsAnalyzing(true);
     toast.info("Analyzing log data...");
@@ -24,15 +24,14 @@ const Index = () => {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/analyze", {
+      const res = await fetch(`${BACKEND_URL}/api/analyze`, {
         method: "POST",
         body: formData,
       });
 
       const data = await res.json();
 
-      setLogs(data); // ✅ real data from backend
-
+      setLogs(data);
       toast.success(`Analysis complete — ${data.length} logs processed`);
     } catch (err) {
       console.error(err);
@@ -43,23 +42,13 @@ const Index = () => {
   };
 
   const handleDownload = () => {
-    window.open("http://127.0.0.1:5000/download", "_blank");
+    window.open(`${BACKEND_URL}/download`, "_blank");
   };
 
-  // 🔥 dynamic chart data
   const barChartData = [
-    {
-      name: "Late Login",
-      value: logs.filter((l) => l.late_login === 1).length,
-    },
-    {
-      name: "Failed Attempts",
-      value: logs.filter((l) => l.high_failed === 1).length,
-    },
-    {
-      name: "File Access",
-      value: logs.filter((l) => l.high_file_access === 1).length,
-    },
+    { name: "Late Login", value: logs.filter((l) => l.late_login === 1).length },
+    { name: "Failed Attempts", value: logs.filter((l) => l.high_failed === 1).length },
+    { name: "File Access", value: logs.filter((l) => l.high_file_access === 1).length },
   ];
 
   const pieChartData = [
@@ -75,18 +64,11 @@ const Index = () => {
         <DashboardHeader onDownload={handleDownload} />
 
         <div className="space-y-6">
-          <SummaryCards
-            totalLogs={logs.length}
-            suspicious={suspicious}
-            normal={normal}
-          />
+          <SummaryCards totalLogs={logs.length} suspicious={suspicious} normal={normal} />
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="lg:col-span-1">
-              <FileUploadSection
-                onAnalyze={handleAnalyze}
-                isAnalyzing={isAnalyzing}
-              />
+              <FileUploadSection onAnalyze={handleAnalyze} isAnalyzing={isAnalyzing} />
             </div>
 
             <div className="lg:col-span-2">
@@ -104,7 +86,6 @@ const Index = () => {
           </div>
 
           <ThreatCharts barData={barChartData} pieData={pieChartData} />
-
           <ThreatTable data={logs} />
         </div>
       </div>
