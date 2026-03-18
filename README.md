@@ -24,3 +24,5 @@ Frontend → sends file → Flask API → ML model → results → UI
 
 ## 📂 Backend Repo
 https://github.com/sharanyamanu/ai-threat-backend
+<img width="1440" height="900" alt="Screenshot 2026-03-18 at 1 03 18 PM" src="https://github.com/user-attachments/assets/ad73d000-28d3-4025-b792-261fb7f64352" />
+
